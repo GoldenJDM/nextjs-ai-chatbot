@@ -115,6 +115,9 @@ export async function POST(request: Request) {
 
     const userType: UserType = session.user.type;
 
+    // ✅ محدودیت چت غیرفعال شد - Rate limit disabled
+    // کد قبلی (کامنت شده):
+    /*
     const messageCount = await getMessageCountByUserId({
       id: session.user.id,
       differenceInHours: 24,
@@ -123,6 +126,7 @@ export async function POST(request: Request) {
     if (messageCount > entitlementsByUserType[userType].maxMessagesPerDay) {
       return new ChatSDKError("rate_limit:chat").toResponse();
     }
+    */
 
     const chat = await getChatById({ id });
 
